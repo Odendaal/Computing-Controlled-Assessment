@@ -7,9 +7,9 @@ position = [i for i, found in enumerate(sentencelist) if found == search] #this 
 if len(position) >1: plural = "s" #used to help the following output make more sense. basically, if the word has been found more than one time, the sentence will say "positions" instead of "position"
 else:
     plural = "" #sets the variable plural as nothing so it knows not to add an s on the end of positions.
-if any(n in position for n in range(0, 9999999)): #I had to make this really over complicated to avoid an error given off by python. but basically if a word has been found, follow the success output.
-    print("The word,", search, ", was found at position"+ plural, position, ".") #here you can see the final output if the word was found, including the "+plural" which was addressed earlier, whether or not the position needed an s on the end depending on how many time the word was found.
-else:
-    print("The word", search, "wasn't found.") #simply if there was no position found, output the word wasn't found.
+if not position: #basically, if no positions are found, then output it no word found.
+	print("The word", search, "wasn't found.")
+else: #self explanitory, if the word was found, output the success, and it's positions.
+    print("The word,", search, ", was found at position"+ plural, position, ".")
 input() #creates a break so the user can press enter when they wish to close the program.
 
