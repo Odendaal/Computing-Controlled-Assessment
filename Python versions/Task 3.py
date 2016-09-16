@@ -29,8 +29,8 @@ def compressfile(): #the following code will make the compress file function
         menu()
     elif sentence == "Cancel" or sentencename == "Cancel": #added capitol C's to help non-case senstivity
         menu()
-    sentencelist = sentence.split()
-    words = {}
+    sentencelist = sentence.split() #creates a list that contains each induvidual word from the sentence that the user inputed
+    words = {} #refer to task 2 from line 5 for information on this commentary
     index = 0
     for word in sentencelist:
         if word not in words:
@@ -48,24 +48,24 @@ def compressfile(): #the following code will make the compress file function
     print("File successfully compressed!")
     menu()
 
-def menu():
-    print("Hello welcome to my controlled assessement task 3. What do you want to do? \n 1) Read file \n 2) Compress sentence into file \n 3) Exit")
-    optionloop = int(0)
-    while optionloop == 0:
+def menu(): #the following code will be the functioning for the main menu
+    print("Hello welcome to my controlled assessement task 3. What do you want to do? \n 1) Read file \n 2) Compress sentence into file \n 3) Exit") #give the user multiple choices for what they want to do
+    optionloop = int(0) #had to make sure the program new that this is an integer at 0.
+    while optionloop == 0: #while the option loop is 0 do the following code
         try:
-            choice = int(input("> "))
-            while choice not in (1, 2, 3):
+            choice = int(input("> ")) #user enters the number choice they wish to do
+            while choice not in (1, 2, 3): #another while loop so if the user enters an invalid option it loops them to line 58 until they enter a valid choice
                 choice = int(input("Enter a valid choice (1 to 3). \n >  "))
-            if choice == 1:
-                optionloop == 1
+            if choice == 1: #if the user enters 1 it take them to readfile function
+                optionloop == 1 #ends the while loop allowing the code to continue to the correct function
                 readfile()
             elif choice == 2:
                 optionloop == 1
                 compressfile()
             elif choice == 3:
                 optionloop == 1
-                print("Cya!")
-                exit
-        except ValueError:
+                print("Cya!") #a goodbye message for the user if they decide to quit the program
+                exit #ends the program
+        except ValueError: #if the program recieves the value error (can be caused by using a string in the integer input), the optionloop variable takes them back to line 56
             optionloop == 0
-menu()
+menu() #the first peace of code the program actually runs is this. Shows the user the menu function, refer to line 52 to see what will appear.
