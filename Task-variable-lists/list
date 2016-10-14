@@ -1,0 +1,84 @@
+
+
+Variables
+list TASK 1
+
+sentence
+– inputted sentence from user
+
+sentencelist
+– sentence split into list
+
+search
+– word inputted from user to look for in sentence list
+
+position
+– index of word list
+
+plural
+– alters output depending on amount of times word is in sentence
+
+ 
+
+Variables
+list TASK 2
+
+sentence
+
+sentencelist
+
+words
+– blank array used for indexes of words in sentence list
+
+index
+– used in for loop
+
+ 
+
+Variable list
+TASK 3
+
+sentencelist
+
+
+attempt
+– while loop used for a function
+
+filename
+– user inputs what they want the file to be named
+
+words
+
+sentencestring
+– assists the joining of words in the sentence list
+
+sentencename
+–user inputs what they wish the sentence to be called
+
+sentence
+
+index
+
+optionloop
+– another while loop for invalid inputs by user
+
+choice
+– used for main menu selection of different functions
+
+ 
+
+Function list
+TASK 3
+
+readfile()
+– defines how to read file
+
+compressfile()
+– defines how to compress a file
+
+menu()
+– the main  menu where you can navigate
+from function to function
+
+ 
+
