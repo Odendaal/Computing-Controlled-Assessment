@@ -1,4 +1,10 @@
-sentence = input("Enter sentence: \n>")  #user enters sentence which is stored in the variable as sentence.
+empty = True
+while empty is True: #just a while loop to make sure the user actually enters somthing as entering nothing could cause errors..
+    sentence = input("Enter sentence: \n>")#user enters sentence which is stored in the variable as sentence.
+    if sentence == "":
+        print("You didn't enter anything...")
+    if sentence !="":
+        empty = False #ends while loop
 sentence = sentence.lower() #turns the sentence into all lower case to prevent case senstivity.
 sentencelist = sentence.split() #splits the sentence into individual words and stores it in this variable as a list.
 search = input("Word to find:\n>") #user enters word they wish to find which is also stored as a variable.
