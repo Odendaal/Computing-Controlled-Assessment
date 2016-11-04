@@ -33,20 +33,20 @@ FUNCTION(decompress):
   OUTPUT sentence
   OUTPUT "This is what I could put together from the file."
   
-  FUNCTION(menu):
-    OUTPUT "What do you want to do?"
-    OUTPUT "1. Compress a file"
-    OUTPUT "2. Decompress a file"
-    OUTPUT "3. QUIT"
-    INPUT choice
-    IF choice = 1 THEN:
-      GOTO compress
-    ELSEIF choice = 2 THEN:
-      GOTO decompress
-    ELSEIF choice = 3 THEN:
-      QUIT
-    ENDIF
-    
+FUNCTION(menu):
+  OUTPUT "What do you want to do?"
+  OUTPUT "1. Compress a file"
+  OUTPUT "2. Decompress a file"
+  OUTPUT "3. QUIT"
+  INPUT choice
+  IF choice = 1 THEN:
+    GOTO compress
+  ELSEIF choice = 2 THEN:
+    GOTO decompress
+  ELSEIF choice = 3 THEN:
+    QUIT
+  ENDIF
+GOTO MENU    
   
     
     
