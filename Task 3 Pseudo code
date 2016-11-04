@@ -20,6 +20,6 @@ FUNCTION(decompress):
   count = 0
   OPEN (filename):
     FOR word IN (filename):
-#didn't have time to finish pseudo code for this task...
+    WRITE word TO 
     
     
