@@ -1,0 +1,11 @@
+INPUT sentence
+sentence = sentence.lower
+sentencelist = sentence.split
+INPUT search
+search = search.lower
+position = sentencelist[search].index
+IF position = "" THEN:
+  OUTPUT "The word (search) wasn't found."
+ELSE:
+  OUTPUT "The word (search) was found at position (position)."
+ENDIF
