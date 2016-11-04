@@ -1,0 +1,25 @@
+FUNCTION(compress):
+  INPUT sentence
+  sentencelist = sentence.split
+  words = []
+  index = 0
+  FOR word IN sentencelist:
+    IF word NOT IN words THEN:
+      words[word] = index
+      index = index + 1
+    ENDIF
+  FOR word IN sentencelist:
+    WRITE words[word] TO index.txt
+    WRITE word TO words.txt
+  OUTPUT "File compressed into indexes and words."
+
+FUNCTION(decompress):
+  INPUT filename
+  words = []
+  i = 0
+  count = 0
+  OPEN (filename):
+    FOR word IN (filename):
+#didn't have time to finish pseudo code for this task...
+    
+    
