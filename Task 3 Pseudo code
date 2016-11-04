@@ -16,10 +16,24 @@ FUNCTION(compress):
 FUNCTION(decompress):
   INPUT filename
   words = []
-  i = 0
   count = 0
   OPEN (filename):
     FOR word IN (filename):
-    WRITE word TO 
+      WRITE word TO words
+      count = count +1
+  CLOSE
+  sentence = " "
+  i = 0
+  WHILE i does not equal count:
+    FOR word IN words:
+      sentence = sentence + word(i) + " "
+  ENDWHILE
+  i = count
+  sentence = sentence + word(i) + "."
+  OUTPUT sentence
+  OUTPUT "This is what I could put together from the file."
+  
+    
+  
     
     
