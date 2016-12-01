@@ -25,9 +25,9 @@ def readfile():                         #creates the function which will be used
 def compressfile():                                                                                 #the following code will make the compress file function
     sentence = input("Enter sentence to compress or type cancel \n > ")                             #user enters the sentence they wish to compress or returns to the main menu
     sentencename = input("Enter the sentences' name or type cancel \n > ")                          #user enters the name they wish to assign to the sentence, this will later be used for the written file name
+    sentence = sentence.lower()                                                                     #just turns the input into lower case to prevent case senstivity
+    sentencename = sentencename.lower()
     if sentence == "cancel" or sentencename == "cancel":                                            #if the user enters cancel in either of the entries, take the user back to the main screen
-        menu()
-    elif sentence == "Cancel" or sentencename == "Cancel":                                          #added capitol C's to help non-case senstivity
         menu()
     sentencelist = sentence.split()                         #creates a list that contains each induvidual word from the sentence that the user inputed
     words = {}                                              #refer to task 2 from line 5 for information on this commentary
