@@ -10,8 +10,16 @@ while empty is True: 								#just a while loop to make sure the user actually e
         empty = False 								#end the while loop and procede
 sentence = sentence.lower() 							#turns the sentence into all lower case to prevent case senstivity.
 sentencelist = sentence.split()							#splits the sentence into individual words and stores it in this variable as a list.
-search = input("Word to find:\n>") 						#user enters word they wish to find which is also stored as a variable.
-search = search.lower() 							#again, the word the user wishes to search is turned into lower case to match the sentence, avoiding case senstivity.
+loop = True
+while loop is True:
+    search = input("Word to find:\n>") 						#user enters word they wish to find which is also stored as a variable.
+    search = search.lower()							#again, the word the user wishes to search is turned into lower case to match the sentence, avoiding case senstivity.
+    if not search:
+        print("You didn't enter anything")
+    elif any(punctuation in search for punctuation in string.punctuation):
+        print("There's punctuation in this word, did you miss click?")
+    else:
+        loop = False
 position = [i for i, found in enumerate(sentencelist) if found == search] 	#For every word in sentencelist that matches search, it will add the index (position) of that word to the position list.
 if len(position) >1: plural = "s" 						#used to help the following output make more sense. basically, if the word has been found more than one time, the sentence will say "positions" instead of "position"
 else:
