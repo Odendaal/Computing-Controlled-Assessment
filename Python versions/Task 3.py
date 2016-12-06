@@ -30,9 +30,14 @@ def compressfile():                                                             
         sentence = input("Enter sentence to compress: \n>")             #user enters a sentence
         if not any(word in sentence for word in string.ascii_letters):  #if there are no letters from the alphabet in the sentence then get angry
             print("What do you expect me to do with this?")
-        sentencename = input("Enter name of sentence: \n>")             #user enters the name they wish to to give the sentence which is used for naming the files
         else:
             loop = False                                                #end the while loop
+    while loop is False:
+        sentencename = input("Enter name of sentence: \n>")             #user enters the name they wish to to give the sentence which is used for naming the files
+        if not any(word in sentencename for word in string.ascii_letters):
+            print("I think a name would be nice...")
+        else:
+            loop = True
     sentencelist = sentence.split()                                     # sentence is split into induvidual words and then stored in a list called sentencelist
     words = {}                                                          #create a blank array for later
     index = 0                                                           #set the index value at 0 to start
@@ -52,23 +57,19 @@ def compressfile():                                                             
     menu()
 
 def menu():                                                 #the following code will be the functioning for the main menu
-    print("Hello welcome to my controlled assessement task 3. What do you want to do? \n 1) Read file \n 2) Compress sentence into file \n 3) Exit") #give the user multiple choices for what they want to do
-    optionloop = int(0)                                     #had to make sure the program new that this is an integer at 0.
-    while optionloop == 0:                                  #while the option loop is 0 do the following code
-        try:
-            choice = int(input("> "))                       #user enters the number choice they wish to do
-            while choice not in (1, 2, 3):                  #another while loop so if the user enters an invalid option it loops them to line 58 until they enter a valid choice
-                choice = int(input("Enter a valid choice (1 to 3). \n >  "))
-            if choice == 1:                                 #if the user enters 1 it take them to readfile function
-                optionloop == 1                             #ends the while loop allowing the code to continue to the correct function
-                readfile()
-            elif choice == 2:
-                optionloop == 1
-                compressfile()
-            elif choice == 3:
-                optionloop == 1
-                print("Cya!")                               #a goodbye message for the user if they decide to quit the program
-                exit                                        #ends the program
-        except ValueError:                                  #if the program recieves the value error (can be caused by using a string in the integer input), the optionloop variable takes them back to line 56
-            optionloop == 0
+    print("Hello welcome to my controlled assessement task 3. What do you want to do? \n A) Read file \n B) Compress sentence into file \n C) Exit") #give the user multiple choices for what they want to do
+    optionloop = True                                       #set a loop as TRUE.
+    while optionloop is True:                               #while the option loop is True do the following code
+        choices = ["a","b","c"]                                   #all the options the user can enter
+        choice = input(">")                                 #user inputs choice here
+        choice = choice.lower()                             #makes input lowercase for case senstivity
+        if choice not in choices:
+            print("Come on dude choose one of the options above!")
+        elif choice == "a":
+            readfile()
+        elif choice == "b":
+            compressfile()
+        elif choice == "c":
+            print("CYA!")
+            exit
 menu()                                                      #the first peace of code the program actually runs is this. Shows the user the menu function, refer to line 52 to see what will appear.
