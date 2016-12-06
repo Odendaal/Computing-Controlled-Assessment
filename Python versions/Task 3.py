@@ -1,12 +1,14 @@
+import string
 def readfile():                         #creates the function which will be used to read compressed files.
     sentencelist = []                   #creates a blank array which will be added to later.
     attempt = "no"                      #creates a variable witht he value of "no" to be used for a while loop
     while attempt == "no":              #creates a loop so if an invalid input has been entered by the user, it loops back to the begining
         filename = input("Enter file name or type cancel. If you used this program to create the file, the filename will be whatever you called it plus 'words' on the end of it. (leave out the txt): ") #user enters the name of the file they wish to read here
-        if filename == "cancel":        #if the user enters cancel it takes them back to the starting screen
+        filenamecheck = filename.lower()    #makes another variable that turns the input into lower to allow non-case senstivity for a cancel input
+        if filenamecheck == "cancel":       #if the user enters cancel it takes them back to the starting screen
             menu()                      #starting screen where user enters what they wish to do (read, write or compress)
-        elif filename == "Cancel":      #again the cancel option but with a captiol C to support case senstivity
-            menu()
+        elif not any(word in filename for word in string.ascii_letters):                    #if there are no letters from the alphabet in the sentence then get angry
+            print("What do you expect me to do with this?")				    #output that nothing was entered
         try:                            #runs this peice of code within an error exception
             with open(filename + '.txt', 'r') as f:         #opens the file that the user identified previously in the filename variable
                 words = f.readlines()                       #sets the varaible words to have all the data in the file
@@ -23,29 +25,30 @@ def readfile():                         #creates the function which will be used
     menu()                                                                                          #returns user to main screen
     
 def compressfile():                                                                                 #the following code will make the compress file function
-    sentence = input("Enter sentence to compress or type cancel \n > ")                             #user enters the sentence they wish to compress or returns to the main menu
-    sentencename = input("Enter the sentences' name or type cancel \n > ")                          #user enters the name they wish to assign to the sentence, this will later be used for the written file name
-    sentence = sentence.lower()                                                                     #just turns the input into lower case to prevent case senstivity
-    sentencename = sentencename.lower()
-    if sentence == "cancel" or sentencename == "cancel":                                            #if the user enters cancel in either of the entries, take the user back to the main screen
-        menu()
-    sentencelist = sentence.split()                         #creates a list that contains each induvidual word from the sentence that the user inputed
-    words = {}                                              #refer to task 2 from line 5 for information on this commentary
-    index = 0
-    for word in sentencelist:
-        if word not in words:
-            words[word] = index
-            index += 1
+    loop = True
+    while loop is True:
+        sentence = input("Enter sentence to compress: \n>")             #user enters a sentence
+        if not any(word in sentence for word in string.ascii_letters):  #if there are no letters from the alphabet in the sentence then get angry
+            print("What do you expect me to do with this?")
+        sentencename = input("Enter name of sentence: \n>")             #user enters the name they wish to to give the sentence which is used for naming the files
+        else:
+            loop = False                                                #end the while loop
+    sentencelist = sentence.split()                                     # sentence is split into induvidual words and then stored in a list called sentencelist
+    words = {}                                                          #create a blank array for later
+    index = 0                                                           #set the index value at 0 to start
+    for word in sentencelist:                                           #goes through each item in the sentencelist
+        if word not in words:                                           #if the item isn't in the words array
+            words[word] = index                                         #the item in the words arrays index is changed to the apropriate position
+            index += 1                                                  #the index variable is increased by one, so the next item found can have its index set to the second position
 
-    with open(sentencename + 'index.txt', 'w') as f:
-        for word in sentencelist:
-            f.write('%d\n' % words[word])
+    with open('index.txt', 'w') as f:                                   #opens or creates a file called index
+        for word in sentencelist:                                       #for each item in the sentencelist
+            f.write('%d\n' % words[word])                               #write the items position number onto the text document along with a newline for the next item
 
-    with open(sentencename + 'words.txt', 'w') as f:
-        for word in sentencelist:
-            f.write(word)
-            f.write('\n')
-    print("File successfully compressed!")
+    with open('words.txt', 'w') as f:                                   #opens or creates a file called words
+        for word in sentencelist:                                       #for each item in sentencelist
+            f.write(word + '\n')                                        #write the item onto the text document along with a newline for the next item
+    print("File compressed into indexes and words.")                    #informs the user that the compressing process has compelted
     menu()
 
 def menu():                                                 #the following code will be the functioning for the main menu
