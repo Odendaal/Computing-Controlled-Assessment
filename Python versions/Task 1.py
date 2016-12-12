@@ -14,7 +14,7 @@ loop = True
 while loop is True:
     search = input("Word to find:\n>") 						    #user enters word they wish to find which is also stored as a variable.
     search = search.lower()							    #again, the word the user wishes to search is turned into lower case to match the sentence, avoiding case senstivity.
-    if not any(word in search for word in string.ascii_letters):                  #if there are no letters from the alphabet in the sentence then get angry
+    if not any(word in search for word in string.ascii_letters):                    #if there are no letters from the alphabet in the sentence then get angry
         print("What do you expect me to do with this?")
     elif any(punctuation in search for punctuation in string.punctuation):
         print("There's punctuation in this word, did you miss click?")
