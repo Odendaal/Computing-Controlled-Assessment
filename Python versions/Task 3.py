@@ -8,7 +8,7 @@ def readfile():                         #creates the function which will be used
         if filenamecheck == "cancel":       #if the user enters cancel it takes them back to the starting screen
             menu()                      #starting screen where user enters what they wish to do (read, write or compress)
         elif not any(word in filename for word in string.ascii_letters):                    #if there are no letters from the alphabet in the sentence then get angry
-            print("What do you expect me to do with this?")				    #output that nothing was entered
+            print("What do you expect me to do with this? (please enter something)")				    #output that nothing was entered
         try:                            #runs this peice of code within an error exception
             with open(filename + '.txt', 'r') as f:         #opens the file that the user identified previously in the filename variable
                 words = f.readlines()                       #sets the varaible words to have all the data in the file
